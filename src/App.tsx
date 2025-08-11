@@ -1,6 +1,22 @@
 import './styles.css';
+import { useState } from 'react';
 
 export default function App() {
+  // List of greetings that can be displayed
+  const greetings = [
+    'Hello World',
+    'Bonjour',
+    'Hola',
+    'Ciao',
+    'Hallo',
+    'Salam',
+    'Olá',
+    'Привет'
+  ];
+
+  // Current greeting shown in the UI
+  const [message, setMessage] = useState('Hello World');
+
   return (
     <main className="container">
       {/* Use the high-resolution Factory logo */}
@@ -16,7 +32,14 @@ export default function App() {
         className="wordmark"
       />
       <div className="hello-world-box">
-        <p>Hello World</p>
+        <p>{message}</p>
+        <button
+          onClick={() =>
+            setMessage(greetings[Math.floor(Math.random() * greetings.length)])
+          }
+        >
+          Afficher un salut aléatoire
+        </button>
       </div>
     </main>
   );
